@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+.game {
+    width: 200px;
+    padding: 10px;
+    border: solid 1px;
+    text-align: center;
+}
+
+.game > img {
+    width: 100px;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
