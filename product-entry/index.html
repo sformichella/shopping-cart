@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Entry</title>
+    <link rel="stylesheet" href="../styles/product-entry.css">
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+    <nav>
+        <input type="button" onclick="location.href='../index.html';" value="Home"/>
+        <input type="button" onclick="location.href='../products/index.html';" value="Games List"/>
+        <input type="button" onclick="location.href='../cart/index.html'" value="Cart">
+    </nav>
+    
+    <h1>Product Entry</h1>
+
+    <form id="form">
+        <input name="id" placeholder="Product ID">
+        <input name="name" placeholder="Game Title">
+        <input name="developer" placeholder="Developer">
+        <input name="image" placeholder="Game Cover">
+        <input name="description" placeholder="Description">
+        <input name="category" placeholder="Category">
+        <input name="price" placeholder="Price">
+
+        <button>Submit</button>
+
+    </form>
+
+    <script type="module" src="../apps/product-entry.js"></script>
+</body>
+</html>

@@ -3,12 +3,12 @@ import {
     calcSubtotal,
     calcOrderTotal,
     findById,
-    cartKey
+    cartKey,
+    productsKey
 } from './utils.js';
 
-import {
-    gamesArray,
-} from './games-data.js'
+
+const productsArray = JSON.parse(localStorage.getItem(productsKey));
 
 
 // Get Stuff
@@ -31,7 +31,7 @@ if (cart) {
     const subtotals = [];
 
     for (const cartItem of cart) {
-        const matchingProduct = findById(gamesArray, cartItem.id);
+        const matchingProduct = findById(productsArray, cartItem.id);
         const subtotal = calcSubtotal(matchingProduct.price, cartItem.quantity);
 
         subtotals.push(subtotal);
