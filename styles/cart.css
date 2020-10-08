@@ -1,11 +1,25 @@
 main {
-    height: 50%;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
+
+nav {
+    padding: 10px;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+nav input {
+    margin: 0px 10px;
+}
+
 
 th {
     text-align: left;
