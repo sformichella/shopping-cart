@@ -2,7 +2,7 @@ import {
     gamesArray,
 } from './games-data.js'
 
-const cartKey = 'CART';
+export const cartKey = 'CART';
 
 // renderGame Function. Creates a list element from a game object.
 export function renderGame(game) {
@@ -45,8 +45,6 @@ export function renderGame(game) {
         cartItem.quantity += 1;
 
         localStorage.setItem(cartKey, JSON.stringify(cart));
-
-        console.log(cart);
     })
 
     li.append(title, developer, cover, price, addButton)

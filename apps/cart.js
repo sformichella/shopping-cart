@@ -2,7 +2,8 @@ import {
     renderRow,
     calcSubtotal,
     calcOrderTotal,
-    findById
+    findById,
+    cartKey
 } from './utils.js';
 
 import {
@@ -10,21 +11,8 @@ import {
 } from './games-data.js'
 
 
-// Cart Array
-export const cart = [
-    {
-        id: 'csgo',
-        quantity: 5
-    },
-    {
-        id: 'stardew-valley',
-        quantity: 4
-    },
-    {
-        id: 'for-the-king',
-        quantity: 3
-    }
-];
+// Get cart from localStorage
+const cart = JSON.parse(localStorage.getItem(cartKey));
 
 
 // Render Rows on the table
