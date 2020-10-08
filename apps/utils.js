@@ -1,5 +1,5 @@
 import {
-    gamesArray,
+    hardCodedGamesArray,
 } from './games-data.js'
 
 export const cartKey = 'CART';
@@ -29,7 +29,7 @@ export function renderGame(game) {
 
     let price = document.createElement('p');
     price.classList.add('price');
-    price.textContent = `$${game.price.toFixed(2)}`;
+    price.textContent = `$${Number(game.price).toFixed(2)}`;
 
     let addButton = document.createElement('button');
     addButton.textContent = 'Add to cart';
@@ -56,7 +56,7 @@ export function renderGame(game) {
 
 // renderRow function. Creates a tr element with title, quantity, price, and subtotal
 export function renderRow(cartItem) {
-    const matchingProduct = findById(gamesArray, cartItem.id);
+    const matchingProduct = findById(hardCodedGamesArray, cartItem.id);
     const price = matchingProduct.price;
     const quantity = cartItem.quantity;
 

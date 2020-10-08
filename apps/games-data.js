@@ -1,4 +1,4 @@
-export const gamesArray = [
+export const hardCodedGamesArray = [
     {
         id: 'csgo',
         name: 'Counter-Strike: Global Offensive',
