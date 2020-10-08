@@ -11,42 +11,55 @@ import {
 } from './games-data.js'
 
 
-// Get cart from localStorage
+// Get Stuff
 const cart = JSON.parse(localStorage.getItem(cartKey));
+const placeOrder = document.getElementById('place-order-button');
 
 
-// Render Rows on the table
-const table = document.getElementById('cart-table');
+if (cart) {
 
-for (const cartItem of cart) {
-    const row = renderRow(cartItem);
+    // Render Rows on the table
+    const table = document.getElementById('cart-table');
 
-    table.append(row);
+    for (const cartItem of cart) {
+        const row = renderRow(cartItem);
+
+        table.append(row);
+    }
+
+    // Calculate total
+    const subtotals = [];
+
+    for (const cartItem of cart) {
+        const matchingProduct = findById(gamesArray, cartItem.id);
+        const subtotal = calcSubtotal(matchingProduct.price, cartItem.quantity);
+
+        subtotals.push(subtotal);
+    }
+
+    const total = calcOrderTotal(subtotals);
+
+    // Add total to table
+    const footer = document.createElement('tr');
+    const footerLeft = document.createElement('td');
+    const footerRight = document.createElement('td');
+
+    footerLeft.setAttribute('colspan', 1);
+    footerRight.setAttribute('colspan', 3);
+
+    footerRight.textContent = `Total: $${total}`;
+
+    footer.append(footerLeft, footerRight);
+    table.append(footer);
+
+    //
+} else {
+    placeOrder.setAttribute('disabled', true);
 }
 
 
-// Calculate total
-const subtotals = [];
-
-for (const cartItem of cart) {
-    const matchingProduct = findById(gamesArray, cartItem.id);
-    const subtotal = calcSubtotal(matchingProduct.price, cartItem.quantity);
-
-    subtotals.push(subtotal);
-}
-
-const total = calcOrderTotal(subtotals);
-
-
-// Add total to table
-const footer = document.createElement('tr');
-const footerLeft = document.createElement('td');
-const footerRight = document.createElement('td');
-
-footerLeft.setAttribute('colspan', 1);
-footerRight.setAttribute('colspan', 3);
-
-footerRight.textContent = `Total: $${total}`;
-
-footer.append(footerLeft, footerRight);
-table.append(footer);
+placeOrder.addEventListener('click', () => {
+    alert(JSON.stringify(cart, true, 2));
+    localStorage.removeItem(cartKey);
+    location.href = '../index.html'
+})
