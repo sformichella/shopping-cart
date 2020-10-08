@@ -3,6 +3,7 @@ import {
 } from './games-data.js'
 
 export const cartKey = 'CART';
+export const productsKey = 'PRODUCTS';
 
 // renderGame Function. Creates a list element from a game object.
 export function renderGame(game) {
@@ -108,4 +109,14 @@ export function calcOrderTotal(subtotalArray) {
     };
 
     return total;
+}
+
+
+// Add Product to localStorage
+export function addProduct(gameObject) {
+    const productsArray = JSON.parse(localStorage.getItem(productsKey)) || [];
+
+    productsArray.push(gameObject);
+
+    localStorage.setItem(productsKey, JSON.stringify(productsArray));
 }

@@ -3,8 +3,13 @@ import {
     renderRow,
     findById,
     calcSubtotal,
-    calcOrderTotal
+    calcOrderTotal,
+    addProduct
 } from '../apps/utils.js'
+
+import {
+    productsKey,
+} from '../apps/utils.js';
 
 
 const test = QUnit.test;
@@ -104,4 +109,24 @@ test('calcOrderTotal should return 165.00 when passed [25.00, 30.00, 50.00, 60.0
     const actual = calcOrderTotal(mySubtotals);
 
     expect.equal(actual, expected);
+})
+
+
+// addProduct test
+test('addProduct should take in a product object and put it in localStorage', (expect) => {
+    const myGame = {
+        id: 'ksp',
+        name: 'Kerbal Space Program',
+        developer: 'Squad',
+        image: 'ksp.png',
+        description: 'A spaceship building and space exploration game',
+        category: 'sim',
+        price: 40.00,
+        onSale: false,
+    };
+
+    addProduct(myGame);
+
+    const actual = findById(JSON.parse(localStorage.getItem(productsKey)), myGame.id);
+    expect.deepEqual(myGame, actual);
 })
