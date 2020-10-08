@@ -1,0 +1,43 @@
+main {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav {
+    padding: 10px;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+nav input {
+    margin: 0px 10px;
+}
+
+
+th {
+    text-align: left;
+    background-color: white;
+}
+
+table {
+    border: solid 1px black;
+}
+
+table * {
+    padding: 5px;
+}
+
+table td:nth-child(even){
+    border: solid 1px black
+}
+
+table tr:nth-child(even) {
+    background-color: lightgray;
+}
