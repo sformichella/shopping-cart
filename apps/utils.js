@@ -1,9 +1,7 @@
-import {
-    hardCodedGamesArray,
-} from './games-data.js'
-
 export const cartKey = 'CART';
 export const productsKey = 'PRODUCTS';
+
+const productsArray = JSON.parse(localStorage.getItem(productsKey));
 
 // renderGame Function. Creates a list element from a game object.
 export function renderGame(game) {
@@ -56,7 +54,7 @@ export function renderGame(game) {
 
 // renderRow function. Creates a tr element with title, quantity, price, and subtotal
 export function renderRow(cartItem) {
-    const matchingProduct = findById(hardCodedGamesArray, cartItem.id);
+    const matchingProduct = findById(productsArray, cartItem.id);
     const price = matchingProduct.price;
     const quantity = cartItem.quantity;
 
@@ -69,7 +67,7 @@ export function renderRow(cartItem) {
 
     titleElem.textContent = matchingProduct.name;
     quantityElem.textContent = cartItem.quantity;
-    priceElem.textContent = `$${matchingProduct.price.toFixed(2)}`;
+    priceElem.textContent = `$${Number(matchingProduct.price).toFixed(2)}`;
     subtotalElem.textContent = `$${calcSubtotal(quantity, price).toFixed(2)}`;
 
     subtotalElem.classList.add('subtotal');
@@ -96,7 +94,7 @@ export function findById(someArray, someId) {
 
 // Calculate subtotal function
 export function calcSubtotal(price, quantity) {
-    return price.toFixed(2) * quantity;
+    return Number(price).toFixed(2) * quantity;
 }
 
 
