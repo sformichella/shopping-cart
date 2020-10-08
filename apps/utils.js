@@ -2,6 +2,8 @@ import {
     gamesArray,
 } from './games-data.js'
 
+const cartKey = 'CART';
+
 // renderGame Function. Creates a list element from a game object.
 export function renderGame(game) {
     let li = document.createElement('li');
@@ -32,12 +34,22 @@ export function renderGame(game) {
     addButton.textContent = 'Add to cart';
     addButton.value = game.id;
 
+    addButton.addEventListener('click', () => {
+        const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
-    li.appendChild(title);
-    li.appendChild(developer);
-    li.appendChild(cover);
-    li.appendChild(price);
-    li.appendChild(addButton);
+        if (!findById(cart, game.id)) {
+            cart.push({id: game.id, quantity: 0});
+        }
+
+        const cartItem = findById(cart, game.id);
+        cartItem.quantity += 1;
+
+        localStorage.setItem(cartKey, JSON.stringify(cart));
+
+        console.log(cart);
+    })
+
+    li.append(title, developer, cover, price, addButton)
 
     return li;
 }
